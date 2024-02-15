@@ -10,7 +10,7 @@ function updateTime() {
       seconds = `${60 - (res.timer % 60)}`.padStart(2, "0");
     }
     time.textContent = `${minutes}:${seconds}`;
-  }); //check
+  }); //check +pull
 }
 updateTime();
 setInterval(updateTime, 1000);
