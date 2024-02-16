@@ -1,10 +1,88 @@
 body {
-  height: 400px;
+  border-radius: 27px;
+  color: white;
+  background-color: tomato;
+  height: 250px;
   width: 300px;
 }
 
 .header {
+  margin: -8px;
+  padding: 5px;
+  background-color: rgb(241, 12, 12);
   display: flex;
   justify-content: center;
   height: 70px;
+}
+
+#time {
+  text-align: center;
+  font-size: 50px;
+  margin: 10px;
+  font-weight: normal;
+  color: white;
+}
+
+#btn-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.popup {
+  transition: background-color 0.5s;
+  background-color: #04aa6d; /* Green */
+  border: none;
+  border-radius: 10%;
+  color: white;
+  padding: 15px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.popup:hover {
+  background-color: #035c3b; /* Green */
+  color: white;
+}
+input[type="text"] {
+  width: 70%; /* Adjust the width as needed */
+  padding: 1px; /* Add padding for spacing */
+  margin: 5px 0; /* Add margin for spacing between inputs */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 13px; /* Add border radius for rounded corners */
+  box-sizing: border-box; /* Include padding and border in element's total width */
+  font-size: 16px; /* Set font size */
+}
+
+input[type="text"]:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: tomato; /* Change border color on focus */
+}
+
+#task-container {
+  margin-top: 15px;
+  margin-left: -8px;
+  margin-right: -8px;
+  padding: 5px; /* Add padding for spacing */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack tasks vertically */
+  align-items: center; /* Center items horizontally */
+  background-color: #870404; /* Change background color */
+}
+input[type="button"] {
+  /* Styles for button inputs */
+  padding: 1px 5px; /* Add padding for spacing */
+  margin-left: 10px;
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  background-color: #04aa6d; /* Set background color */
+  color: black; /* Set text color */
+  font-size: 16px; /* Set font size */
+  cursor: pointer; /* Set cursor to pointer on hover */
+}
+
+input[type="button"]:hover {
+  /* Styles for button inputs on hover */
+  background-color: #035c3b; /* Darken background color */
 }
