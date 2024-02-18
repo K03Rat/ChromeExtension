@@ -4,8 +4,10 @@ chrome.runtime.onInstalled.addListener((details) => {
     id: "contexMenu1",
     contexts: ["page", "selection"],
   });
-  chrome.contextMenus.onClicked.addListener((event) => {
-    console.log(event);
+});
+chrome.contextMenus.onClicked.addListener((event) => {
+  chrome.tabs.create({
+    url: `https://www.imdb.com/find/?q=${event.selectionText}&ref_=nv_sr_sm`,
   });
 });
 
