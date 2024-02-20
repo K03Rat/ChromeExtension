@@ -20,7 +20,7 @@
   "permissions": ["contextMenus", "search", "tabs", "storage", "tts"],
   "content_scripts": [
     {
-      "matches": ["https://www.google.com/*"],
+      "matches": ["<all_urls>"],
       "css": ["contentScript.css"],
       "js": ["contentScript.js"]
     }

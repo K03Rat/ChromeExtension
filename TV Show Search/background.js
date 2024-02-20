@@ -23,6 +23,7 @@ chrome.runtime.onInstalled.addListener((details) => {
   chrome.contextMenus.onClicked.addListener((event) => {
     // Check which context menu item was clicked
     if (event.menuItemId === "contextMenu1") {
+      console.log(event.selectionText);
       // If 'Search TV Show' context menu item was clicked
       // Fetch TV show data based on the selected text using TVMaze API
       fetch(`http://api.tvmaze.com/search/shows?q=${event.selectionText}`)
