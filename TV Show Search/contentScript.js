@@ -5,7 +5,7 @@ for (const li of nextLink) {
 }
 console.log(text);
 
-console.log("Hello bitch");
+console.log("Hello");
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   console.log(message);
   console.log(sender);
