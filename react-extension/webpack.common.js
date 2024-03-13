@@ -1,12 +1,13 @@
 const path = require('path')
 const CopyPlugin = require('copy-webpack-plugin')
 const HtmlPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
-  mode: 'development',
-  devtool: 'cheap-module-source-map',
   entry: {
     popup: path.resolve('src/popup/popup.tsx'),
     options: path.resolve('src/options/options.tsx'),
+    background: path.resolve('src/backgroundScript/background.ts'),
+    contentScript: path.resolve('src/contentScript/ContentScript.ts'),
   },
   module: {
     rules: [
@@ -26,6 +27,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin({
+      cleanStaleWebpackAssets: false, //distribution folder to be wiped out only time we switch from development to pruduction or vice verca
+    }),
     new CopyPlugin({
       patterns: [
         {
