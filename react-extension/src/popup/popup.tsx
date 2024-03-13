@@ -1,17 +1,21 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import '@fontsource/roboto'
+import WeatherCard from './WeatherCard'
 import './popup.css'
 
-const test = (
-  <img
-    src="logo.png"
-    style={{
-      width: 300,
-    }}
-  />
-)
+const Popup: React.FC<{}> = () => {
+  return (
+    <div>
+      <WeatherCard city="Galway" />
+      <WeatherCard city="Dublin" />
+    </div>
+  )
+}
 
-const root = document.createElement('div')
-document.body.appendChild(root)
-const rootElement = createRoot(root)
-rootElement.render(test)
+const container = document.createElement('div')
+document.body.appendChild(container)
+const root = createRoot(container)
+root.render(<Popup />)
+
+export default Popup
