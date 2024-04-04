@@ -1,4 +1,4 @@
-const OPEN_WEATHER_API_KEY = '1602bfc8de30c9b077826beedc9a9a0f' // I've got free plan, so do take advantage of this API key
+const OPEN_WEATHER_API_KEY = '5900a0ecc0076683ed8ae549794e7447' // I've got free plan, so do take advantage of this API key
 export interface OpenWeatherData {
   name: string
   main: {
