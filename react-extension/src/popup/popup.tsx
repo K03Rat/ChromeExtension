@@ -5,13 +5,22 @@ import { Grid, Box, InputBase, IconButton, Paper } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import WeatherCard from './WeatherCard'
 import './popup.css'
-import { setStoredCities, getStoredCities } from '../utils/storage'
+import {
+  setStoredCities,
+  setStoredOptions,
+  getStoredCities,
+  getStoredOptions,
+  LocalStorageOptions,
+} from '../utils/storage'
 
 const Popup: React.FC<{}> = () => {
   const [cities, setCities] = useState<string[]>([])
   const [cityInput, setCityInput] = useState<string>('')
+  const [options, setOptions] = useState<LocalStorageOptions | null>(null)
+
   useEffect(() => {
     getStoredCities().then((cities) => setCities(cities))
+    getStoredOptions().then((options) => setOptions(options))
   }, [])
 
   const handleCityButtonClick = () => {
@@ -31,12 +40,25 @@ const Popup: React.FC<{}> = () => {
       setCities(updatedCities)
     })
   }
+
+  const handleTempScaleButtonClick = () => {
+    const updateOptions: LocalStorageOptions = {
+      ...options,
+      tempScale: options.tempScale === 'metric' ? 'imperial' : 'metric',
+    }
+    setStoredOptions(updateOptions).then(() => {
+      setOptions(updateOptions)
+    })
+  }
+  if (!options) {
+    return null
+  }
   return (
-    <Box mx="8px" my="16px">
-      <Grid container>
-        <Grid item>
+    <Box mx="10px" my="16px">
+      <Grid container spacing={2} alignItems="center">
+        <Grid item xs>
           <Paper>
-            <Box px="15px" py="5px">
+            <Box px="15px" py="4px" display="flex" alignItems="center">
               <InputBase
                 placeholder="Add a city name"
                 value={cityInput}
@@ -48,11 +70,21 @@ const Popup: React.FC<{}> = () => {
             </Box>
           </Paper>
         </Grid>
+        <Grid item>
+          <Paper>
+            <IconButton onClick={handleTempScaleButtonClick}>
+              {options.tempScale === 'metric' ? '\u2103' : '\u2109'}
+            </IconButton>
+          </Paper>
+        </Grid>
       </Grid>
-
+      {options.homeCity !== '' && (
+        <WeatherCard city={options.homeCity} tempScale={options.tempScale} />
+      )}
       {cities.map((city, index) => (
         <WeatherCard
           city={city}
+          tempScale={options.tempScale}
           key={index}
           onDelete={() => handleCityDeleteButtonClick(index)}
         />
